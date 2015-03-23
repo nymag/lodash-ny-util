@@ -1,0 +1,35 @@
+{
+  "name": "lodash-ny-util",
+  "version": "0.0.1",
+  "description": "Lodash mixin for generic list, map, string functionality.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nymag/lodash-ny-util.git"
+  },
+  "keywords": [
+    "New",
+    "York",
+    "Magazine",
+    "Lodash"
+  ],
+  "author": "New York Magazine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nymag/lodash-ny-util/issues"
+  },
+  "homepage": "https://github.com/nymag/lodash-ny-util",
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "lodash": "^3.5.0"
+  }
+}
