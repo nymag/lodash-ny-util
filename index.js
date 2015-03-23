@@ -55,57 +55,16 @@
     },
 
     /**
-     * Returns function that takes a collection of objects and returns them mapped by a property name. Used in
-     * conjunction with promises. If list of items is an object, it will pretend it was given an array with the values
-     * of the object.
+     * Shorthand for using lodash functions with A+ Promise's `.then` function
      *
-     * Example: [{'name': 'a', thing: 'b'}, {'name': 'c', thing: 'd'}] becomes
-     *   { a: {'name': 'a', thing: 'b'}, c: {'name': 'c', thing: 'd'} }
-     *
-     * @param {string} indexName
-     * @returns {Function}
+     * @param {string|function} fn
+     * @example return Promise.resolve(thing).then(_.promise(_.indexBy)('name')))
+     * @example return Promise.resolve(thing).then(_.promise('indexBy')('name')))
+     * @example return Promise.resolve(thing).then(_.promise(_.indexBy, 'name')))
+     * @example return Promise.resolve(thing).then(_.promise('indexBy', 'name')))
+     * @returns {function}
      */
-    indexBy: function (indexName) {
-      return function (items) {
-        return _.indexBy(items, indexName);
-      };
-    },
-
-    /**
-     * Returns a function that returns object without certain properties. Used in conjunction with promises.
-     *
-     * @example Promise.resolve({a: b, c: d, e: f}).then(omitNamedRows('c', 'e'))
-     *
-     * Same as:
-     *
-     * function () {
-     *   var names = arguments;
-     *   return function (map) {
-     *     return _.omit(map, names);
-     *   };
-     * }
-     *
-     * @returns {Function}
-     */
-    omitNamedRows: _.partial.bind(null, _.omit, _),
-
-    /**
-     * Returns a function that returns object with only certain properties. Used in conjunction with promises.
-     *
-     * @example Promise.resolve({a: b, c: d, e: f}).then(pickNamedRows('c', 'e'))
-     *
-     * Same as:
-     *
-     * function () {
-     *   var names = arguments;
-     *   return function (map) {
-     *     return _.pick(map, names);
-     *   };
-     * }
-     *
-     * @returns {Function}
-     */
-    pickNamedRows: _.partial.bind(null, _.pick, _),
+    promise: convertToPromisePartial,
 
     /**
      * Takes an object that contains other objects, and flips the keys of the object and the inner object
@@ -122,6 +81,20 @@
       }, {});
     }
   };
+
+  /**
+   *
+   * @param {string|function} fn
+   * @returns {function(this:null)}
+   */
+  function convertToPromisePartial(fn) {
+    fn = _.isFunction(fn) ? fn : _[fn];
+    var result = _.partial.bind(null, fn, _);
+    if (arguments.length > 1) {
+      result = result.apply(null, Array.prototype.slice.call(arguments, 1));
+    }
+    return result;
+  }
 
   _.mixin(mixins);
   return mixins;
