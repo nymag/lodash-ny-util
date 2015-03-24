@@ -1,6 +1,15 @@
 # lodash-ny-util
 Lodash mixin for generic list, map, string functionality.
 
+[![Build Status](https://travis-ci.org/nymag/lodash-ny-util.svg?branch=master)](https://travis-ci.org/nymag/lodash-ny-util)
+[![Code Climate](https://codeclimate.com/github/nymag/lodash-ny-util/badges/gpa.svg)](https://codeclimate.com/github/nymag/lodash-ny-util)
+
+## Install
+
+```
+npm install --save lodash-ny-util
+```
+
 ## Usage
 
 ```js
