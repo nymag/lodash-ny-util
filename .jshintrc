@@ -16,15 +16,12 @@
   "node":       true,   // allow node global vars
   "latedef":    true,   // don't use variables before they're defined
   "globals": {
-      /* MOCHA */
-      "describe": false,
-      "it": false,
-      "before": false,
-      "beforeEach": false,
-      "after": false,
-      "afterEach": false,
-      /* FACTORY */
-      "DS": false,
-      "Promise": true
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "define": false
   }
 }
