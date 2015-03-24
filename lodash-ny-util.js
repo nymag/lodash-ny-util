@@ -16,7 +16,7 @@
     module.exports = factory(require('lodash').runInContext());
   } else {
     // Browser globals (root is window)
-    root._.mixin(factory(root._.runInContext()));
+    root._ = factory(root._.runInContext());
   }
 }(this, function (_) {
   'use strict';
