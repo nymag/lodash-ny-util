@@ -30,7 +30,7 @@
     fn = _.isFunction(fn) ? fn : _[fn];
     var result = _.partial.bind(null, fn, _);
     if (arguments.length > 1) {
-      result = result.apply(null, Array.prototype.slice.call(arguments, 1));
+      result = result.apply(null, _.slice(arguments, 1));
     }
     return result;
   }
