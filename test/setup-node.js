@@ -13,6 +13,7 @@ _.mixin(require('../lodash-ny-util'));
 require('./functions/mapToHeaders');
 require('./functions/promise');
 require('./functions/invertKeys');
+require('./functions/listDeepObjects');
 
 describe('initialization', function () {
   it('mixin: does not remove previous mixins', function () {

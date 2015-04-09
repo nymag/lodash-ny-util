@@ -56,3 +56,30 @@ _.invertKeys({a: {b: 'c', d: 'e'}, f: {g: 'h', i: 'j'}})
 //becomes {b: {a: 'c'}, d: {a: 'e'}, g: {f: 'h'}, i: {f: 'j'}}
 ```
 
+### listDeepObjects
+
+Takes an object, and returns every object inside that object.
+
+```js
+_.listDeepObjects({a:{b:{c:{d:'e'}}, f:{g:{h:'e'}}}})
+// becomes:
+//  [
+//    { b: { c: { d: 'e' } }, f: { g: { h: 'e' } } },
+//    { c: { d: 'e' } },
+//    { g: { h: 'e' } },
+//    { h: 'e' },
+//    { d: 'e' },
+//  ]
+```
+
+Optionally takes a filter:
+
+```js
+_.listDeepObjects({a:{b:{c:{d:'e'}}, f:{d:{g:'e'}}}}, 'd');
+//becomes [ { d: { g: 'e' } }, { d: 'e' } ]
+```
+
+```js
+_.listDeepObjects({a: {type:'yarn'}, b: {c: {type:'sweater'}}}, function (obj) { return !!obj.type; });
+//becomes [ { type: 'yarn' }, { type: 'sweater' } ]
+```
