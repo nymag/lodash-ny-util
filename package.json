@@ -1,6 +1,6 @@
 {
   "name": "lodash-ny-util",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Lodash mixin for generic list, map, string functionality.",
   "main": "lodash-ny-util.js",
   "directories": {
