@@ -92,6 +92,27 @@
         });
         return obj;
       }, {});
+    },
+
+    /**
+     * @param obj
+     * @param [filter=_.identity]  Optional filter
+     *
+     * NOTE:  Should probably put this in our lodash utils
+     */
+    listDeepObjects: function (obj, filter) {
+      var cursor, items,
+        list = [],
+        queue = [obj];
+
+      while (queue.length) {
+        cursor = queue.pop();
+        items = _.filter(cursor, _.isObject);
+        list = list.concat(_.filter(items, filter || _.identity));
+        queue = queue.concat(items);
+      }
+
+      return list;
     }
   };
 
