@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/nymag/lodash-ny-util",
   "devDependencies": {
-    "chai": "^2.1.2",
+    "chai": "^3.4.1",
     "mocha": "^2.2.1"
   },
   "dependencies": {
